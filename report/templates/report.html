@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Report</title>
+</head>
+<body>
+
+    <div class="basic-information" style="border: 1px black solid;">
+        <h1 style="text-align: center; background-color: rgb(44, 44, 247);">{{ title }}</h1>
+        <p> Proposed Project for financing reivew: <strong>{{project}}</strong> </p>
+        <p> Operating Company: <strong>{{operating_company}}</strong></p>
+        <p> Parent Company: <strong>{{parent_company}}</strong></p>
+        <p> Business Owners: <strong>{{business_owners}}</strong></p>
+        <p> Primary Business Address: <strong>{{primary_business_address}}</strong></p>
+        <p> Locations: <strong>{{locations}}</strong></p>
+        <p style="background-color: lightsalmon;"> Business Financing Needs Summary: <strong>{{business_financing_needs_summary}}</strong></p>
+        <p style="background-color: plum;"> Proposed Loan Needs: <strong>{{proposed_loan_needs}}</strong></p>
+        <p style="background-color: lightblue;"> Package Includes: <strong>{{package_includes}}</strong></p>
+    </div>
+
+    <div class="new-operations-forecast">
+        <div style="background-color: mediumpurple; text-align: center;">
+            <h1><strong>NEW OPERATIONS FORECAST</strong></h1>
+            <p><strong>{{operating_company}}</strong></p>
+            <p><strong>{{project}}</strong></p>
+        </div>
+
+        <p style="background-color: blue;"><strong>Operating Statement</strong></p>
+        <table style="width: 100vw; margin-left: auto; margin-right: 0px;">
+            <tr>
+                <th></th>
+                <th>Year 1</th>
+                <th>Year 2</th>
+                <th>Year 3</th>
+            </tr>
+            <tr>
+                <th style="margin-left: 0px; margin-right: auto;"># of Locations (Drive Thru/Ground up)</th>
+                <td>{{year_one_locations}}</td>
+                <td>{{year_two_locations}}</td>
+                <td>{{year_three_locations}}</td>
+            </tr>
+            <tr>
+                <th>Area ({{state}})</th>
+            </tr>
+            <tr>
+                <th style="color:red">Revenue</th>
+            </tr>
+            <tr style="background-color: lightgreen;">
+                <th>Sales</th>
+                <td>{{year_one_sales}}</td>
+                <td>{{year_two_sales}}</td>
+                <td>{{year_three_sales}}</td>
+            </tr>
+            <tr>
+                <th style="color:red">Cost of Goods Sold</th>
+            </tr>
+            <tr>
+                <th>Food Costs</th>
+                <th>{{year_one_food_costs}}</th>
+                <th>{{year_two_food_costs}}</th>
+                <th>{{year_three_food_costs}}</th>
+            </tr>
+            <tr>
+                <th>Labor Costs</th>
+                <th>{{year_one_labor_costs}}</th>
+                <th>{{year_two_labor_costs}}</th>
+                <th>{{year_three_labor_costs}}</th>
+            </tr>
+            <tr>
+                <th>Total Cost of Goods Sold</th>
+                <th>{{year_one_total_costs}}</th>
+                <th>{{year_two_total_costs}}</th>
+                <th>{{year_three_total_costs}}</th>
+            </tr>
+            <tr>
+                <th style="color:red">Other Operative Exp</th>
+            </tr>
+            <tr>
+                <th>Administrative & General</th>
+                <th>{{year_one_ag_costs}}</th>
+                <th>{{year_two_ag_costs}}</th>
+                <th>{{year_three_ag_costs}}</th>
+            </tr>
+            <tr>
+                <th>Royalty/Sales Mktg</th>
+                <th>{{year_one_rsm_costs}}</th>
+                <th>{{year_two_rsm_costs}}</th>
+                <th>{{year_three_rsm_costs}}</th>
+            </tr>
+            <tr>
+                <th>Facilities</th>
+                <th>{{year_one_facilities_costs}}</th>
+                <th>{{year_two_facilities_costs}}</th>
+                <th>{{year_three_facilities_costs}}</th>
+            </tr>
+            <tr>
+                <th>Total Other Operative Exp</th>
+                <th>{{year_one_total_other_operative_exp}}</th>
+                <th>{{year_two_total_other_operative_exp}}</th>
+                <th>{{year_three_total_other_operative_exp}}</th>
+            </tr>
+            <tr>
+                <th>Total Operative Exp</th>
+                <th>{{year_one_total_operative_exp}}</th>
+                <th>{{year_two_total_operative_exp}}</th>
+                <th>{{year_three_total_operative_exp}}</th>
+            </tr>
+            <tr>
+                <th>Income Before Fix Expense</th>
+                <th>{{year_one_income_before_fix_expense}}</th>
+                <th>{{year_two_income_before_fix_expense}}</th>
+                <th>{{year_three_income_before_fix_expense}}</th>
+            </tr>
+            <tr>
+                <th style="color:red">Fixed Expense</th>
+            </tr>
+            <tr>
+                <th>Property Tax</th>
+                <th>{{year_one_property_tax}}</th>
+                <th>{{year_two_property_tax}}</th>
+                <th>{{year_three_property_tax}}</th>
+            </tr>
+            <tr>
+                <th>Insurance</th>
+                <th>{{year_one_insurance}}</th>
+                <th>{{year_two_insurance}}</th>
+                <th>{{year_three_insurance}}</th>
+            </tr>
+            <tr>
+                <th>Reserve</th>
+                <th>{{year_one_reserve}}</th>
+                <th>{{year_two_reserve}}</th>
+                <th>{{year_three_reserve}}</th>
+            </tr>
+            <tr>
+                <th>Total Fix Expense</th>
+                <th>{{year_one_total_fix_expense}}</th>
+                <th>{{year_two_total_fix_expense}}</th>
+                <th>{{year_three_total_fix_expense}}</th>
+            </tr>
+            <tr style="background-color:plum">
+                <th >Net Income Before Interest & Tax</th>
+                <th>{{year_one_net_income_before_interest_tax}}</th>
+                <th>{{year_two_net_income_before_interest_tax}}</th>
+                <th>{{year_three_net_income_before_interest_tax}}</th>
+            </tr>
+        </table>
+    </div>
+
+    <div class="personal-financial-statement">
+        <h1 style="text-align: center;">Personal Financial Statements</h1>
+        <table>
+            <tr>
+                <th>Owner 1: {{owner}} (Monthly Pmts)</th>
+            </tr>
+            <tr>
+                <th><h2>Assets</h4></th>
+            </tr>
+            <tr>
+                <th>Cash</th>
+                <th>{{cash}}</th>
+            </tr>
+            <tr>
+                <th>Marketable Securities</th>
+                <th>{{marketable_securities}}</th>
+            </tr>
+            <tr>
+                <th>Total Liquid Assets</th>
+                <th>{{total_liquid_assets}}</th>
+            </tr>
+            <tr></tr>
+            <tr></tr>
+            <tr></tr>
+            <tr></tr>
+            <tr></tr>
+            <tr></tr>
+            <tr></tr>
+            <tr></tr>
+            <tr></tr>
+            <tr></tr>
+            <tr></tr>
+            <tr></tr>
+            <tr>
+                <th>Real Estate</th>
+                <th>{{real_estate}}</th>
+            </tr>
+            <tr>
+                <th>Primary Residence</th>
+                <th>{{primary_residence1}}</th>
+            </tr>
+            <tr>
+                <th>Total Real Estate</th>
+                <th>{{total_real_estate}}</th>
+            </tr>
+            <tr></tr>
+            <tr></tr>
+            <tr></tr>
+            <tr></tr>
+            <tr></tr>
+            <tr></tr>
+            <tr></tr>
+            <tr></tr>
+            <tr></tr>
+            <tr></tr>
+            <tr></tr>
+            <tr></tr>
+            <tr>
+                <th>Other Assets</th>
+                <th>{{other_assets}}</th>
+            </tr>
+            <tr>
+                <th>IRA/401K</th>
+                <th>{{ira_401k}}</th>
+            </tr>
+            <tr>
+                <th>Life Insurance</th>
+                <th>{{life_insurance}}</th>
+            </tr>
+            <tr>
+                <th>Notes Receivable</th>
+                <th>{{notes_receivable}}</th>
+            </tr>
+            <tr>
+                <th>Business Values</th>
+                <th>{{business_values}}</th>
+            </tr>
+            <tr>
+                <th>Automobiles</th>
+                <th>{{automobiles}}</th>
+            </tr>
+            <tr>
+                <th>Personal Property</th>
+                <th>{{personal_property}}</th>
+            </tr>
+            <tr>
+                <th>Total Other Assets</th>
+                <th>{{total_other_assets}}</th>
+            </tr>
+            <tr style="background-color: skyblue;">
+                <th>Total Assets</th>
+                <th>{{total_assets}}</th>
+            </tr>
+
+            <tr>
+                <th><h2>Liabilites</h4></th>
+            </tr>
+            <tr>
+                <th>Primary Residence</th>
+                <th>{{primary_residence2}}</th>
+            </tr>
+            <tr>
+                <th>Total RE Mortgage</th>
+                <th>{{total_re_mortgage}}</th>
+            </tr>
+            <tr>
+                <th>Accounts Payable</th>
+                <th>{{accounts_payable}}</th>
+            </tr>
+            <tr>
+                <th>Notes Payable</th>
+                <th>{{notes_payable}}</th>
+            </tr>
+            <tr>
+                <th>Installment Accounts</th>
+                <th>{{installment_accounts}}</th>
+            </tr>
+            <tr style="background-color: lightsalmon;">
+                <th>Total Liabilites</th>
+                <th>{{total_liabilites}}</th>
+            </tr>
+            <tr style="background-color: darksalmon;">
+                <th>Net Worth</th>
+                <th>{{net_worth}}</th>
+            </tr>
+            <tr style="background-color: skyblue;">
+                <th>Total</th>
+                <th>{{overall_total}}</th>
+            </tr>
+        </table>
+    </div>
+
+
+</body>
+</html>
+
+

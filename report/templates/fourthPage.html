@@ -1,0 +1,16 @@
+<form action="/yearThree/" method="post">
+    {% csrf_token %}
+    {{form.as_p}}
+    <button type="submit", name="save">Save</button>
+</form>
+
+<a href="{% url 'logout' %}">Log out</a>
+<br>
+<br>
+<a href="{% url 'yearTwo' %}">Back</a>
+<br>
+<br>
+<a href="{% url 'incomeTaxReturnFiles' %}">Income Tax Returns</a>
+<br>
+<br>
+<a href="{% url 'finalReport' %}">Final Report</a>

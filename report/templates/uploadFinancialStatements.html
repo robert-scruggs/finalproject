@@ -1,0 +1,31 @@
+{% block content %}
+  
+  <h1>Please upload Personal Financial Statements</h1>
+  <p>Add as many personal financial statements as needed</p>
+  <p>Press the submit button after adding all financial statemnets</p>
+  
+  <form method="post" enctype="multipart/form-data" action="">
+    {% csrf_token %}
+    <input type="file" name="files" id="file" multiple>
+    <br>
+    <br>
+    <br>
+    <button type="submit" id="submit">Submit</button>
+  </form>
+  
+  <div id="fileList" style="border: 1px solid black; width: 500px;" >
+    <p>Currently Submitted Files</p>
+    {% for data in pfs%}
+      {{data.file}}
+      <br>
+    {%endfor%}
+  </div>
+  
+  <br>
+  <br>
+  <a href="{% url 'incomeTaxReturnFiles' %}">Income Tax Return</a>
+  <br>
+  <br>
+  <a href="{% url 'finalReport' %}">Final Report</a>
+
+{% endblock %}

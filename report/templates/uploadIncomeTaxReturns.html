@@ -1,0 +1,89 @@
+{% block content %}
+<h1>Please upload Income Tax Returns</h1>
+<p>Add as many income tax returns as needed</p>
+<p>Press the submit button after adding all tax returns</p>
+<p>Please fill out all details below</p>
+
+  <form method="post" enctype="multipart/form-data" id="my-form">
+    {% csrf_token %}
+    <label for="files">You will need to submit tax returns one business at a time. <br> Please select all years and select them in order at the same time and then press submit below.</label>
+    <input type="file" name="files" id="file" multiple>
+    <button type="submit">Submit</button>
+  </form>
+  
+  <div id="fileList" style="border: 1px solid black; display: flex; justify-content: space-evenly;" >
+    <p>Currently Submitted Files: </p>
+    {% for data in ffr%}
+      {{data.file}}
+      <br>
+    {%endfor%}
+  </div>
+
+
+  <br>
+  <br>
+  <a href="{% url 'personalFinancialStatementFiles' %}">Personal Financial Statment</a>
+  <br>
+  <br>
+  <a href="{% url 'incomeTaxReturnFiles' %}">Income Tax Return</a>
+  <br>
+  <br>
+  <a href="{% url 'finalReport' %}">Final Report</a>
+
+  <script>
+      function getCookie(name) {
+    const cookieValue = document.cookie.match('(^|;)\\s*' + name + '\\s*=\\s*([^;]+)');
+    return cookieValue ? cookieValue.pop() : '';
+  }
+    
+  const myForm = document.getElementById('my-form');
+
+    myForm.addEventListener('submit', (event) => {
+      event.preventDefault();
+      
+      const formData = new FormData();
+      
+      const uploadedFiles = document.querySelector('[name="files"]').files;
+      for (let i = 0; i < uploadedFiles.length; i++) {
+        formData.append('files', uploadedFiles[i]);
+
+        const nre = window.prompt('NRE for ' + uploadedFiles[i].name + ":" );
+        formData.append('nre', nre);
+
+        const ownersManagementFees = window.prompt('Owners management fees for ' + uploadedFiles[i].name + ":"  );
+        formData.append('ownersManagementFees', ownersManagementFees);
+      }
+      
+      const businessName = window.prompt('Business Name:');
+      formData.append('businessName', businessName);
+      
+      const address = window.prompt('Address:');
+      formData.append('address', address);
+      
+      const owners = window.prompt('Owners:');
+      formData.append('owners', owners);
+      
+      const locations = window.prompt('Locations:');
+      formData.append('locations', locations);
+
+      const yearsInBusiness = window.prompt('How many years has this business been operating:');
+      formData.append('yearsInBusiness', yearsInBusiness);
+      
+      fetch('/incomeTaxReturnFiles/', {
+        method: 'POST',
+        body: formData,
+        headers: {
+          'X-CSRFToken': getCookie('csrftoken'),
+        },
+      })
+      .then(response => response.json())
+      .then(data => {
+        console.log(data);
+      })
+      .catch(error => console.error(error));
+  });
+
+    
+    
+  </script>
+{% endblock %}

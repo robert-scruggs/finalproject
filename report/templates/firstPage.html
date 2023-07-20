@@ -1,0 +1,19 @@
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+
+<form action="" method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    {{form.as_p}}
+    <button type="submit", name="save">Save</button>
+</form>
+
+<a href="{% url 'logout' %}">Log out</a>
+<br>
+<br>
+<a href="{% url 'yearOne' %}">Next</a>
+<br>
+<br>
+<a href="{% url 'finalReport' %}">Final Report</a>
+<br>
+<br>
+<a href="{% url 'restart' %}">Restart</a>

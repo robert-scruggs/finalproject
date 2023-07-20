@@ -1,0 +1,580 @@
+{% load custom_filters %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Report</title>
+    <style>
+        table {
+          border-collapse: collapse;
+          border: none;
+        }
+        td, th {
+          border: none;
+        }
+      </style>
+</head>
+<body>
+
+    <div class="basic-information" style="border: 1px black solid;">
+        {% for data in bi %}
+        <h1 style="text-align: center; background-color: rgb(44, 44, 247);">Business Financing Review</h1>
+        <p> Proposed Project for financing reivew: <strong>{{data.finance_review}}</strong> </p>
+        <p> Operating Company: <strong>{{data.operating_company}}</strong></p>
+        <p> Parent Company: <strong>{{data.parent_company}}</strong></p>
+        <p> Business Owners: <strong>{{data.business_owners}}</strong></p>
+        <p> Primary Business Address: <strong>{{data.primary_business_address}}</strong></p>
+        <p> Locations: <strong>{{data.locations}}</strong></p>
+        <p style="background-color: lightsalmon;"> Business Financing Needs Summary: <strong>{{data.finance_review}}</strong></p>
+        <p style="background-color: plum;"> Proposed Loan Needs: <strong>{{data.proposed_loan_needs}}</strong></p>
+        <p style="background-color: lightblue;"> Package Includes: <strong>{{data.list_of_report_outcomes}}</strong></p>
+        {% endfor %}
+    </div>
+
+    
+    <div class="new-operations-forecast">
+        {% for data in bi %}
+        <div style="background-color: mediumpurple; text-align: center;">
+            <h1><strong>NEW OPERATIONS FORECAST</strong></h1>
+            <p><strong>{{data.operating_company}}</strong></p>
+            <p><strong>{{data.finance_review}}</strong></p>
+        </div>
+        {% endfor %}
+
+
+        <p style="background-color: blue;"><strong>Operating Statement</strong></p>
+        <table style="width: 100vw; margin-left: auto; margin-right: 0px;">
+            <thead>
+                <tr>
+                    <th></th>
+                    <th>Year 1</th>
+                    <th>Year 2</th>
+                    <th>Year 3</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <th style="margin-left: 0px; margin-right: auto;"># of Locations (Drive Thru/Ground up)</th>
+                    {% for data in oy1 %}
+                    <th>{{data.num_of_locations}}</th>
+                    <!-- <th>{{year_two_locations}}</th>
+                    <th>{{year_three_locations}}</th> -->
+                    {% endfor %}
+                </tr>
+            </tbody>
+            <tr>
+                <th>Area ({{ state }}) </th>
+            </tr>
+            <tr>
+                <th style="color:red">Revenue</th>
+            </tr>
+            <tr style="background-color: lightgreen;">
+                <th>Sales</th>
+                {% for data in oy1 %}
+                
+                <th>{{data.total_sales}}</th>
+                <!-- <th>{{year_two_sales}}</th>
+                <th>{{year_three_sales}}</th> -->
+
+                {% endfor %}
+
+            </tr>
+            <tr>
+                <th style="color:red">Cost of Goods Sold</th>
+            </tr>
+            <tr>
+                <th>Food Costs</th>
+                {% for data in oy1 %}
+
+                <th>{{data.food_cost}}</th>
+                <!-- <th>{{year_two_food_costs}}</th>
+                <th>{{year_three_food_costs}}</th> -->
+                {% endfor %}
+
+            </tr>
+            <tr>
+                <th>Labor Costs</th>
+                
+                {% for data in oy1 %}
+                <th>{{data.labor_cost}}</th>
+                <!-- <th>{{year_two_labor_costs}}</th>
+                <th>{{year_three_labor_costs}}</th> -->
+                {% endfor %}
+
+            </tr>
+            <tr>
+                <th>Total Cost of Goods Sold</th>
+                
+                {% for data in oy1 %}
+                <th>{{data.total_cost_of_goods}}</th>
+                <!-- <th>{{year_two_total_costs}}</th>
+                <th>{{year_three_total_costs}}</th> -->
+                {% endfor %}
+
+            </tr>
+            <tr>
+                <th style="color:red">Other Operative Exp</th>
+            </tr>
+            <tr>
+                <th>Administrative & General</th>
+                {% for data in oy1 %}
+
+                <th>{{data.admin_and_general}}</th>
+                <!-- <th>{{year_two_ag_costs}}</th>
+                <th>{{year_three_ag_costs}}</th> -->
+                {% endfor %}
+
+            </tr>
+            <tr>
+                <th>Royalty/Sales Mktg</th>
+                {% for data in oy1 %}
+
+                <th>{{data.rands_marketing}}</th>
+                <!-- <th>{{year_two_rsm_costs}}</th>
+                <th>{{year_three_rsm_costs}}</th> -->
+                {% endfor %}
+
+            </tr>
+            <tr>
+                <th>Facilities</th>
+                {% for data in oy1 %}
+
+                <th>{{data.facilities}}</th>
+                <!-- <th>{{year_two_facilities_costs}}</th>
+                <th>{{year_three_facilities_costs}}</th> -->
+                {% endfor %}
+
+            </tr>
+            <tr>
+                <th>Total Other Operative Exp</th>
+                {% for data in oy1 %}
+
+                <th>{{data.total_other_operative_expenses}}</th>
+                <!-- <th>{{year_two_total_other_operative_exp}}</th>
+                <th>{{year_three_total_other_operative_exp}}</th> -->
+                {% endfor %}
+
+            </tr>
+            <tr>
+                <th>Total Operative Exp</th>
+                {% for data in oy1 %}
+
+                <th>{{data.total_operative_expenses}}</th>
+                <!-- <th>{{year_two_total_operative_exp}}</th>
+                <th>{{year_three_total_operative_exp}}</th> -->
+                {% endfor %}
+
+            </tr>
+            <tr>
+                <th>Income Before Fix Expense</th>
+                {% for data in oy1 %}
+                
+                <th>{{data.income_before_fix_expense}}</th>
+                <!-- <th>{{year_two_income_before_fix_expense}}</th>
+                <th>{{year_three_income_before_fix_expense}}</th> -->
+                {% endfor %}
+            </tr>
+            <tr>
+                <th style="color:red">Fixed Expense</th>
+            </tr>
+            <tr>
+                <th>Property Tax</th>
+                {% for data in oy1 %}
+                <th>{{data.propert_tax}}</th>
+                <!-- <th>{{year_two_property_tax}}</th>
+                <th>{{year_three_property_tax}}</th> -->
+                {% endfor %}
+            </tr>
+            <tr>
+                <th>Insurance</th>
+                {% for data in oy1 %}
+                <th>{{data.insurance}}</th>
+                <!-- <th>{{year_two_insurance}}</th>
+                <th>{{year_three_insurance}}</th> -->
+                {% endfor %}
+            </tr>
+            <tr>
+                <th>Reserve</th>
+                {% for data in oy1 %}
+                <th>{{data.reserve}}</th>
+                <!-- <th>{{year_two_reserve}}</th>
+                <th>{{year_three_reserve}}</th> -->
+                {% endfor %}
+            </tr>
+            <tr>
+                <th>Total Fix Expense</th>
+                {% for data in oy1 %}
+                <th>{{data.total_fix_expenses}}</th>
+                <!-- <th>{{year_two_total_fix_expense}}</th>
+                <th>{{year_three_total_fix_expense}}</th> -->
+                {% endfor %}
+            </tr>
+            <tr style="background-color:plum">
+                <th >Net Income Before Interest & Tax</th>
+                {% for data in oy1 %}
+                <th>{{data.net_income_before_interest_and_tax}}</th>
+                <!-- <th>{{year_two_net_income_before_interest_tax}}</th>
+                <th>{{year_three_net_income_before_interest_tax}}</th> -->
+                {% endfor %}
+            </tr>
+        </table>
+    </div>
+    <br>
+    <br>
+    <div class="personal-financial-statement" style="display: flex; flex-direction: row; justify-content: space-around; border: 1px solid black;">
+        <div class="labels" style="display: flex; flex-direction: column; justify-content: space-evenly; align-items: center;">
+            <h4 style="color: red;">Personal Financial Statements</h4>
+            <h4 style="color: red;">Assets</h4>
+            <h4>Cash</h4>
+            <h4>Marketable Securities</h4>
+            <h4 style="color: red;">Total Liquid Assets</h4>
+            <h4>Real Estate</h4>
+            <h4>Primary Residence</h4>
+            <h4 style="color: red;">Total Real Estate</h4>
+            <h4>Other Assets</h4>
+            <h4>IRA/401K</h4>
+            <h4>Life Insurance</h4>
+            <h4>Notes Receivable</h4>
+            <h4>Business Values</h4>
+            <h4>Automobiles</h4>
+            <h4>Personal Property</h4>
+            <h4 style="color: red;">Total Other Assets</h4>
+            <h4 style="color: red;">Total Assets</h4>
+            <h4 style="color: red;">Liabilities</h4>
+            <h4>Primary Residence</h4>
+            <h4 style="color: red;">Total RE Mortgage</h4>
+            <h4>Accounts Payable</h4>
+            <h4>Notes Payable</h4>
+            <h4>Installment Accounts</h4>
+            <h4 style="color: red;">Total Liabilities</h4>
+            <h4 style="color: red;" >Net Worth</h4>
+            <h4 style="color: red;">Total</h4>
+
+        </div>
+        {% for data in pfs%}
+        <div class="content" style=" display: flex; flex-direction: column; justify-content: space-evenly; align-items: center;">
+            <h4>Robert </h4>
+            <h4 style="visibility: hidden;">{{data.cash}}</h4>
+            <h4>{{data.cash}}</h4>
+            <h4>{{data.marketable_securities}}</h4>
+            <h4>{{data.total_liquid_assets}}</h4>
+            <h4 style="visibility: hidden;">{{data.cash}}</h4>
+            <h4>{{data.primary_residence}}</h4>
+            <h4>{{data.primary_residence}}</h4>
+            <h4 style="visibility: hidden;">{{data.cash}}</h4>
+            <h4>{{data.ira_401k}}</h4>
+            <h4>{{data.life_insurance}}</h4>
+            <h4>{{data.notes_receivable}}</h4>
+            <h4>{{data.business_values}}</h4>
+            <h4>{{data.automobiles}}</h4>
+            <h4>{{data.personal_property}}</h4>
+            <h4>{{data.total_other_assets}}</h4>
+            <h4>{{data.total_assets}}</h4>
+            <h4 style="visibility: hidden;">{{data.cash}}</h4>
+            <h4>{{data.total_re_mortgage}}</h4>
+            <h4>{{data.total_re_mortgage}}</h4>
+            <h4>{{data.accounts_payable}}</h4>
+            <h4>{{data.notes_payable}}</h4>
+            <h4>{{data.installment_accounts}}</h4>
+            <h4>{{data.total_liabilities}}</h4>
+            <h4>{{data.net_worth}}</h4>
+            <h4>{{data.grand_total}}</h4>
+        </div>
+        {%endfor%}
+    </div>
+    <br>
+    <br>
+    
+    {%for data in consolidated%}
+    <div class="consolidated" style="width: 100vw; ">
+                {% if forloop.first %}
+                <h2>FINANCIAL FLASH RPT - Consolidated</h2>
+                <div class="top-portion" style=" display: flex; flex-direction: column; width: 100%;">
+                    <h4 style="background-color: rgb(214, 18, 214); width: 100%;">General Customer Information</h4>
+                    <div style="display: flex; flex-direction: column; justify-content: flex-start;">
+                        <p>Company Name: <b>{{data.company_name}}</b> </p> 
+                        <p>Address: <b>{{data.address}}</b> </p> 
+                        <p>Owners Name(s): <b>{{data.owner_name}}</b> </p> 
+                        <p>How many years in current business: <b>{{data.years_in_current_business}}</b> </p>
+                        <div style="display: flex; flex-direction: row; justify-content: space-between; width: 1000px;">
+                            <b>Current Business Structure: </b> 
+                            <div>
+                                {% for part in business_structure_split %}
+                                <div style="display: flex; flex-direction: column; width: 100%;">
+                                    <b style="background-color: rgba(254, 166, 2, 0.61); width: 100%;">{{data.company_name}}</b>
+                                    <b>Owners: {{data.owner_name}}, Locations: {{part}}</b>
+                                </div>
+                                <br>
+                                {%endfor%}
+                            </div>
+                        </div> 
+                    </div>
+                </div>
+                {% endif %}
+                    <br>
+                    <br>
+                {% if forloop.first %}
+                <div class="taxYears" style="display: flex; flex-direction: row; justify-content: space-around; background-color: lightgoldenrodyellow;">
+                        <p style="text-align: center;">Type of Statement <br># of Months: <br>Date of Statement:</p>
+                        {%for data in consolidated%}
+                        {%if not forloop.last%}
+                        <p style="text-align: center;">Tax <br> 12 <br>{{data.date_of_statement}}</p>
+                        {%else%}
+                        <p style="text-align: center;">Tax <br> 12 <br>{{data.date_of_statement}}</p>
+                        {%endif%}
+                        {%endfor%}
+                    </div>
+                    {% endif %}
+
+                    <br>
+                <br>
+                    {% if forloop.first %}
+                <div class="cash-flow-forecast-flash" style="border: 1px solid black;">
+                <p style="text-align: center;"><b>Cash Flow Forecast Flash</b></p>
+                <div style="display: flex; flex-direction: row; justify-content: space-around;">
+                    <div style="display: flex; flex-direction: column; justify-content: space-around;">
+                        <p style="text-align: center;"><b>Cash from Sales</b></p>
+                        <p style="text-align: center;">Gross Cash Income</p>
+                        <p style="text-align: center;">Cash Operating Expenses</p>
+                        <p style="text-align: center;">Other Income (Expense)</p>
+                        <p style="text-align: center;">Net Cash after Operations</p>
+                        <p style="text-align: center;">M1 Net Deductions</p>
+                        <p style="text-align: center;">M2 Net Deductions</p>
+                        <p style="text-align: center;">Ending Cash Position</p>
+                        <p style="text-align: center;">Addbacks</p>
+                        <p style="text-align: center;">Depreciation</p>
+                        <p style="text-align: center;">Amortization</p>
+                        <p style="text-align: center;">Interest</p>
+                        <p style="text-align: center;">NRE</p>
+                        <p style="text-align: center;">Owners Management Fees</p>
+                        <p style="text-align: center;">Cash Flow</p>
+                    </div>
+                    {% endif %}
+                    
+                    {% if forloop.first %}
+                    {%for data in consolidated%}
+
+                    <div style="display: flex; flex-direction: column; justify-content: space-around;">
+
+                        <p style="text-align: center;">{{data.cash_from_sales}}</p>
+
+                        <p style="text-align: center;">{{data.gross_cash_income}}</p>
+                        
+                        <p style="text-align: center;">{{data.cash_operating_expenses}}</p>
+                        
+                        <p style="text-align: center;">{{data.other_income}}</p>
+                        
+                        <p style="text-align: center;">{{data.net_cash_after_operations}}</p>
+                        
+                        <p style="text-align: center;">{{data.m1_net_deductions}}</p>
+                        
+                        <p style="text-align: center;">{{data.m2_net_deductions}}</p>
+                        
+                        <p style="text-align: center;">{{data.ending_cash_position}}</p>
+                        
+                        <p style="text-align: center; visibility: hidden;"></p>
+                        
+                        <p style="text-align: center;">{{data.depreciation}}</p>
+                        
+                        <p style="text-align: center;">{{data.amortization}}</p>
+                        
+                        <p style="text-align: center;">{{data.interest}}</p>
+                        
+                        <p style="text-align: center;">{{data.nre}}</p>
+                        
+                        <p style="text-align: center;">{{data.owners_management_fees}}</p>
+                        
+                        <p style="text-align: center;">{{data.cash_flow}}</p>
+                    </div> 
+                
+                    {%endfor%}
+                    {% endif %}
+                </div>
+            </div>
+            <br>
+            <br>
+                    {% if forloop.first %}
+            <div class="operationsAbilityToCoverNewDebt" style="border: 1px solid black;">
+                <p style="text-align: center;"><b>Operations Ability to Cover new debt</b></p>
+                <div style="display: flex; flex-direction: row; justify-content: space-around;">
+                    <div style="display: flex; flex-direction: column; justify-content: space-around;">
+                        <p style="text-align: center;"><b>Operational Cash</b></p>
+                        <p style="text-align: center;"><b>Gross Cash Income</b> </p>
+                        <p style="text-align: center; background-color: yellow;">New Debt Service</p>
+                        <p style="text-align: center;">= Surplus</p>
+                        <p style="text-align: center; background-color: lightgreen;">Coverage Ratio</p>
+                    </div>
+                    {% endif %}
+                    {% if forloop.first %}
+                {%for data in consolidated%}
+                <div style="display: flex; flex-direction: column; justify-content: space-around;">
+                        <p style="text-align: center;"><b>{{data.cash_flow}}</b></p>
+                        <p style="text-align: center;">{{data.cash_flow}}</p>
+                        <p style="text-align: center;">{{data.cash_flow}}</p>
+                        <p style="text-align: center;">{{data.cash_flow}}</p>
+                        <p style="text-align: center;">{{data.cash_flow}}</p>
+                    </div>
+                    {%endfor%}
+                    {% endif %}
+                </div>
+            </div>
+            <br>
+            <br>
+            {% if forloop.first %}
+            <div class="financialFootnotes" style="border: 1px solid black;">
+                <p style="text-align: center;"><b>Financial Footnotes</b> </p>
+                <p>{{data.footnotes}}</p>
+            </div>
+            {% endif %}
+        </div>
+        {%endfor%}
+    
+     {%for business in ffr%}
+    <div class="financialFlashReports" style="width: 100vw; ">
+            {%for data in business.items%}
+                {% if forloop.first %}
+                <h2>FINANCIAL FLASH RPT - {{data.company_name}}</h2>
+                <div class="top-portion" style=" display: flex; flex-direction: column; width: 100%;">
+                    <h4 style="background-color: rgb(214, 18, 214); width: 100%;">General Customer Information</h4>
+                    <div style="display: flex; flex-direction: column; justify-content: flex-start;">
+                        <p>Company Name: <b>{{data.company_name}}</b> </p> 
+                        <p>Address: <b>{{data.address}}</b> </p> 
+                        <p>Owners Name(s): <b>{{data.owner_name}}</b> </p> 
+                        <p>How many years in current business: <b>{{data.years_in_current_business}}</b> </p>
+                        <div style="display: flex; flex-direction: row; justify-content: space-between; width: 1000px;">
+                            <b>Current Business Structure: </b> 
+                            <div>
+                                <div style="display: flex; flex-direction: column; width: 100%;">
+                                    <b style="background-color: rgba(254, 166, 2, 0.61); width: 100%;">{{data.company_name}}</b>
+                                    <b>Owners: {{data.owner_name}}, Locations: {{data.current_business_structure}}</b>
+                                </div>
+                                <br>
+                            </div>
+                        </div> 
+                    </div>
+                </div>
+                {% endif %}
+                    <br>
+                    <br>
+                {% if forloop.first %}
+                <div class="taxYears" style="display: flex; flex-direction: row; justify-content: space-around; background-color: lightgoldenrodyellow;">
+                        <p style="text-align: center;">Type of Statement <br># of Months: <br>Date of Statement:</p>
+                        {%for data in business.items%}
+                        {%if not forloop.last%}
+                        <p style="text-align: center;">Tax <br> 12 <br>{{data.date_of_statement}}</p>
+                        {%else%}
+                        <p style="text-align: center;">Tax <br> 12 <br>{{data.date_of_statement}}</p>
+                        {%endif%}
+                        {%endfor%}
+                    </div>
+                    {% endif %}
+
+                    <br>
+                <br>
+                    {% if forloop.first %}
+                <div class="cash-flow-forecast-flash" style="border: 1px solid black;">
+                <p style="text-align: center;"><b>Cash Flow Forecast Flash</b></p>
+                <div style="display: flex; flex-direction: row; justify-content: space-around;">
+                    <div style="display: flex; flex-direction: column; justify-content: space-around;">
+                        <p style="text-align: center;"><b>Cash from Sales</b></p>
+                        <p style="text-align: center;">Gross Cash Income</p>
+                        <p style="text-align: center;">Cash Operating Expenses</p>
+                        <p style="text-align: center;">Other Income (Expense)</p>
+                        <p style="text-align: center;">Net Cash after Operations</p>
+                        <p style="text-align: center;">M1 Net Deductions</p>
+                        <p style="text-align: center;">M2 Net Deductions</p>
+                        <p style="text-align: center;">Ending Cash Position</p>
+                        <p style="text-align: center;">Addbacks</p>
+                        <p style="text-align: center;">Depreciation</p>
+                        <p style="text-align: center;">Amortization</p>
+                        <p style="text-align: center;">Interest</p>
+                        <p style="text-align: center;">NRE</p>
+                        <p style="text-align: center;">Owners Management Fees</p>
+                        <p style="text-align: center;">Cash Flow</p>
+                    </div>
+                    {% endif %}
+                {% if forloop.first %}
+                {%for data in business.items%}
+                    <div style="display: flex; flex-direction: column; justify-content: space-around;">
+                        <p style="text-align: center;"><b>{{data.cash_from_sales}}</b></p>
+                        <p style="text-align: center;">{{data.gross_cash_income}}</p>
+                        <p style="text-align: center;">{{data.cash_operating_expenses}}</p>
+                        <p style="text-align: center;">{{data.other_income}}</p>
+                        <p style="text-align: center;">{{data.net_cash_after_operations}}</p>
+                        <p style="text-align: center;">{{data.m1_net_deductions}}</p>
+                        <p style="text-align: center;">{{data.m2_net_deductions}}</p>
+                        <p style="text-align: center;">{{data.ending_cash_position}}</p>
+                        <p style="text-align: center; visibility: hidden;"></p>
+                        <p style="text-align: center;">{{data.depreciation}}</p>
+                        <p style="text-align: center;">{{data.amortization}}</p>
+                        <p style="text-align: center;">{{data.interest}}</p>
+                        <p style="text-align: center;">{{data.nre}}</p>
+                        <p style="text-align: center;">{{data.owners_management_fees}}</p>
+                        <p style="text-align: center;">{{data.cash_flow}}</p>
+                    </div> 
+                    {%endfor%}
+                    {% endif %}
+                </div>
+            </div>
+            <br>
+            <br>
+                    {% if forloop.first %}
+            <div class="operationsAbilityToCoverNewDebt" style="border: 1px solid black;">
+                <p style="text-align: center;"><b>Operations Ability to Cover new debt</b></p>
+                <div style="display: flex; flex-direction: row; justify-content: space-around;">
+                    <div style="display: flex; flex-direction: column; justify-content: space-around;">
+                        <p style="text-align: center;"><b>Operational Cash</b></p>
+                        <p style="text-align: center;"><b>Gross Cash Income</b> </p>
+                        <p style="text-align: center; background-color: yellow;">New Debt Service</p>
+                        <p style="text-align: center;">= Surplus</p>
+                        <p style="text-align: center; background-color: lightgreen;">Coverage Ratio</p>
+                    </div>
+                    {% endif %}
+                    {% if forloop.first %}
+                {%for data in business.items%}
+                <div style="display: flex; flex-direction: column; justify-content: space-around;">
+                        <p style="text-align: center;"><b>{{data.operational_cash}}</b></p>
+                        <p style="text-align: center;">{{data.cash_flow}}</p>
+                        <p style="text-align: center;">{{data.cash_flow}}</p>
+                        <p style="text-align: center;">{{data.cash_flow}}</p>
+                        <p style="text-align: center;">{{data.cash_flow}}</p>
+                    </div>
+                    {%endfor%}
+                    {% endif %}
+                </div>
+            </div>
+            <br>
+            <br>
+            {% if forloop.first %}
+            <div class="financialFootnotes" style="border: 1px solid black;">
+                <p style="text-align: center;"><b>Financial Footnotes</b> </p>
+                <p>{{data.footnotes}}</p>
+            </div>
+            {% endif %}
+            {%endfor%}
+        </div>
+        {%endfor%} 
+            
+    
+</body>
+</html>
+
+<!-- {{data.cash_from_sales}}
+{{data.gross_cash_income}}
+{{data.cash_operating_expenses}}
+{{data.other_income}}
+{{data.net_cash_after_operations}}
+{{data.m1_net_deductions}}
+{{data.m2_net_deductions}}
+{{data.ending_cash_position}}
+{{data.depreciation}}
+{{data.amortization}}
+{{data.interest}}
+{{data.nre}}
+{{data.owners_management_fees}}
+{{data.cash_flow}}
+{{data.operational_cash}} -->
+
